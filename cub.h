@@ -5,12 +5,16 @@
 #ifndef CUB3D_CUB_H
 # define CUB3D_CUB_H
 # include <stdio.h>
+# include <time.h>
 # include <stdlib.h>
 # include "minilibx/mlx.h"
 # include <math.h>
 # include "GNL/get_next_line.h"
 # include "libft/libft.h"
 # include <limits.h>
+#include <sys/resource.h>
+#include <sys/times.h>
+
 # define DEFAULT -1
 # define SOUTH 0
 # define NORTH 1
@@ -21,8 +25,8 @@
 # define one_ray_angle(fov, width) fov * 1.0 / width
 
 typedef struct 	s_line {
-	double 		bot;
-	double		top;
+	int 		bot;
+	int			top;
 	int 		x_pos;
 	double 		column_height;
 }				t_line;
@@ -123,7 +127,7 @@ typedef struct  s_image
 
 void            put_rectangle(t_data *img, t_image *format, int color);
 void            my_mlx_pixel_put(t_data *data, int x, int y, int color);
-int    rgb_to_int(unsigned char r, unsigned char g, unsigned char b);
+//int    rgb_to_int(unsigned char r, unsigned char g, unsigned char b);
 t_player 		*init_start_position(char **map);
 double			degrees_to_rad(double degrees);
 double 			rad_to_deg(double rad);
@@ -164,10 +168,10 @@ t_sprite_list			*mergesort_list(t_sprite_list *lst);
 int		add_to_sprite_list(t_game *game, t_ray ray);
 void	init_sprite_list(t_game *game);
 int 		lstsize(t_sprite_list *head);
-void 	draw_sprite(t_game *game, int sprite_index, float *z_buff);
+void 	draw_sprite(t_game *game, int sprite_index, float *z_buff, t_ray ray);
 void 	init_dist_from_sprite(t_game *game);
 t_ray 	bad_raycast(t_game *game, double deg);
-void 	draw_all_sprites(t_game *game, float *z_buff);
+void 	draw_all_sprites(t_game *game, float *z_buff, t_ray ray);
 int 	starts_with(char *start, char *string);
 int 	digit_len(char *string);
 int 	skip_spaces(char **string);
@@ -182,6 +186,13 @@ int 	check_borders(int i, int j, char **map, t_game *game);
 int 	check_begin_pos(char c);
 void 		init_start_pos(t_game *game, char c, int i, int j);
 t_game		*init_game(int fd);
+void 	create_bmp(t_game *game);
+int 		get_color(t_data *data, int x, int y);
+void 	error(char *message);
+void	int_to_bytes(int num, unsigned char *header);
+int    rgb_to_int(unsigned char r, unsigned char g, unsigned char b);
+int 	shadow_wall(int color, float distance, float k);
+double getCPUTime();
 
 
 

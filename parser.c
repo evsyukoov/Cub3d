@@ -230,7 +230,7 @@ char 	**aligne_map(char **map)
 			free(extra);
 		}
 		else
-			aligned_map[i] = map[i];
+			aligned_map[i] = ft_strdup(map[i]);
 		free(map[i++]);
 	}
 	aligned_map[i] = 0;
@@ -257,7 +257,7 @@ char 	**read_map(t_list *lst)
 		lst = lst->next;
 		free(tmp);
 	}
-	map[i] = 0;
+	map[i] = NULL;
 	return (aligne_map(map));
 }
 

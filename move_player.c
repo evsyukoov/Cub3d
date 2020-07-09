@@ -29,19 +29,19 @@
 	return (0);
 }*/
 
-int 	check_forward(t_game *game, float side_dir)
+int 	check_wall(t_game *game, float side_dir)
 {
 	int x;
 	int y;
 
-	x = game->player->x / 64;
-	y = game->player->y / 64;
-	x += cos(degrees_to_rad(side_dir));
-	y += sin (degrees_to_rad(side_dir));
-	printf("side_dir = %f\n", side_dir);
-	printf("new x = %d, new y = %d\n", x, y);
-	if ((game->map)[y][x] == '1') {
-		printf("yo\n");
+	x = game->player->x;
+	y = game->player->y;
+	x += 64 * cos(degrees_to_rad(side_dir));
+	y += 64 * sin (degrees_to_rad(side_dir));
+	//printf("side_dir = %f\n", side_dir);
+	//printf("new x = %d, new y = %d\n", x, y);
+	if ((game->map)[y / 64][x / 64] == '1') {
+		//printf("yo\n");
 		return (0);
 	}
 	return (1);
@@ -95,16 +95,20 @@ int		key_events(int key, t_game *game)
 		}
 		prev_x = x;
 		prev_y = y;
-		//if(check_forward(game, side_dir)) {
+		if(check_wall(game, side_dir)) {
 			game->player->x += step * cos(degrees_to_rad(side_dir));
 			game->player->y += step * sin(degrees_to_rad(side_dir));
-	//	}
+		}
 			side_dir = normalize_deg(side_dir);
+
 			//ray = raytracing(game, side_dir);
 			//printf("player dir = %f, length to projection = %f\n",side_dir, ray.length);
 			//printf("ray x = %f, ray y = %f\n",ray.x / 64, ray.y / 64);
-			printf("pos x = %d, pos y = %d\n", game->player->x / 64, game->player->y / 64);
+			//printf("pos x = %d, pos y = %d\n", game->player->x / 64, game->player->y / 64);
 			//printf("dir = %f\n", game->player->dir);
 	}
+	raycaster(game, game->textures);
+	mlx_put_image_to_window(game->mlx, game->mlx_win, game->image.img, 0, 0);
+	//mlx_string_put(game->mlx, game->mlx_win, 50, 50, rgb_to_int(255,255,255), "HELLO WORLD!");
 	return (0);
 }

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Cub"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/denis/Denis/21School/Cub/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/denis/Denis/21School/Cub/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/denis/Denis/21School/Cub/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/denis/Denis/21School/Cub/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/denis/Denis/21School/Cub/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/denis/Denis/21School/Cub/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/denis/Denis/21School/Cub/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/denis/Denis/21School/Cub/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/denis/Denis/21School/Cub/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/denis/Denis/21School/Cub/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/denis/Denis/21School/Cub/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/denis/Denis/21School/Cub/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/denis/Denis/21School/Cub/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/denis/Denis/21School/Cub/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/denis/Denis/21School/Cub/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Cub">
+				<Option output="/Users/denis/Denis/21School/Cub/cmake-build-debug/Cub" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/denis/Denis/21School/Cub/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.1/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/denis/Denis/21School/Cub/cmake-build-debug/Makefile&quot;  VERBOSE=1 Cub"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/denis/Denis/21School/Cub/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/denis/Denis/21School/Cub/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/denis/Denis/21School/Cub/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Cub/fast">
+				<Option output="/Users/denis/Denis/21School/Cub/cmake-build-debug/Cub" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/denis/Denis/21School/Cub/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.1/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/denis/Denis/21School/Cub/cmake-build-debug/Makefile&quot;  VERBOSE=1 Cub/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/denis/Denis/21School/Cub/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/denis/Denis/21School/Cub/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/denis/Denis/21School/Cub/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/denis/Denis/21School/Cub/2DHelpers.c">
+			<Option target="Cub"/>
+		</Unit>
+		<Unit filename="/Users/denis/Denis/21School/Cub/bitmap.c">
+			<Option target="Cub"/>
+		</Unit>
+		<Unit filename="/Users/denis/Denis/21School/Cub/check_map_borders.c">
+			<Option target="Cub"/>
+		</Unit>
+		<Unit filename="/Users/denis/Denis/21School/Cub/drawing_utils.c">
+			<Option target="Cub"/>
+		</Unit>
+		<Unit filename="/Users/denis/Denis/21School/Cub/init_player.c">
+			<Option target="Cub"/>
+		</Unit>
+		<Unit filename="/Users/denis/Denis/21School/Cub/main.c">
+			<Option target="Cub"/>
+		</Unit>
+		<Unit filename="/Users/denis/Denis/21School/Cub/merge_sort.c">
+			<Option target="Cub"/>
+		</Unit>
+		<Unit filename="/Users/denis/Denis/21School/Cub/move_player.c">
+			<Option target="Cub"/>
+		</Unit>
+		<Unit filename="/Users/denis/Denis/21School/Cub/parser.c">
+			<Option target="Cub"/>
+		</Unit>
+		<Unit filename="/Users/denis/Denis/21School/Cub/parsing_utils.c">
+			<Option target="Cub"/>
+		</Unit>
+		<Unit filename="/Users/denis/Denis/21School/Cub/raycaster.c">
+			<Option target="Cub"/>
+		</Unit>
+		<Unit filename="/Users/denis/Denis/21School/Cub/sprites.c">
+			<Option target="Cub"/>
+		</Unit>
+		<Unit filename="/Users/denis/Denis/21School/Cub/utils.c">
+			<Option target="Cub"/>
+		</Unit>
+		<Unit filename="/Users/denis/Denis/21School/Cub/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

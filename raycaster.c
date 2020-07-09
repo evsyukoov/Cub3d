@@ -75,25 +75,6 @@ float 		horizontal_tracing(t_game *game, double deg, t_ray *ray)
 	return (distance);
 }
 
-t_ray 	bad_raycast(t_game *game, double deg)
-{
-	t_ray ray;
-	float distance;
-
-	distance = 0;
-	while (1)
-	{
-		ray.x = game->player->x + distance * cos(degrees_to_rad(deg));
-		ray.y = game->player->y  + distance * sin(degrees_to_rad(deg));
-		if ((game->map)[(int)ray.y][(int)ray.x] == '1')
-			break;
-		distance += 0.01;
-	}
-	ray.length = distance;
-	ray.wall = 1;
-	return (ray);
-}
-
 t_ray 	raytracing(t_game *game, float deg)
 {
 	t_ray ray1;
@@ -101,12 +82,7 @@ t_ray 	raytracing(t_game *game, float deg)
 	t_ray ray;
 	float dv;
 	float dh;
-	float dop;
 
-	ray1.start_x = game->player->x;
-	ray1.start_y = game->player->y;
-	ray2.start_x = game->player->x;
-	ray2.start_y = game->player->y;
 	dv = vertical_tracing(game, deg, &ray1);
 	dh = horizontal_tracing(game, deg, &ray2);
 	if (dh <= dv) {
@@ -117,7 +93,6 @@ t_ray 	raytracing(t_game *game, float deg)
 		else
 			ray.wall = SOUTH;
 		ray.length = dh;
-		//printf("ray.length = %f\n",ray.length / 64);
 	}
 	else {
 		ray.x = ray1.x;
@@ -129,7 +104,6 @@ t_ray 	raytracing(t_game *game, float deg)
 		ray.length = dv;
 	}
 	ray.perp_length = ray.length  * cos(degrees_to_rad(deg - game->player->dir));
-	//printf("deg = %f, ray length = %f\n", deg, ray.length);
 	return (ray);
 }
 
@@ -141,11 +115,13 @@ t_line 	find_vertical_line(t_game *game, t_ray ray, int x_pos, double deg)
 	float d_proj;
 
 	column_height = game->win_height * 64 / ray.perp_length;
-	//if (column_height <= game->win_height)
-	//	column_height = game->win_height;
 	line.column_height = column_height;
 	line.top = game->win_height / 2 - column_height / 2;
+	if (line.top < 0)
+		line.top = 0;
 	line.bot = game->win_height / 2 + column_height / 2;
+	if (line.bot > game->win_height)
+		line.bot = game->win_height;
 	line.x_pos = x_pos;
 	return (line);
 }
@@ -164,8 +140,6 @@ void 	find_texture_x(t_game *game, t_ray *ray, t_texture **texture)
 	texture[ray->wall]->text_x = (int)(ray->wall_x * texture[ray->wall]->width);
 	if (ray->wall == EAST || ray->wall == SOUTH)
 		texture[ray->wall]->text_x = texture[ray->wall]->width - texture[ray->wall]->text_x - 1;
-	//printf("text width = %d", texture[ray->wall]->width);
-	//printf("ray text x = %d\n", texture[ray->wall]->text_x);
 }
 
 int 	raycaster(t_game *game, t_texture **texture)
@@ -190,8 +164,7 @@ int 	raycaster(t_game *game, t_texture **texture)
 		deg += one_ray_angle(60, game->win_width);
 		deg = normalize_deg(deg);
 	}
-	draw_all_sprites(game, z_buff);
+	draw_all_sprites(game, z_buff, ray);
 	free(z_buff);
-	mlx_put_image_to_window(game->mlx, game->mlx_win, game->image.img, 0, 0);
 	return (1);
 }

@@ -12,7 +12,9 @@ add_executable(Cub main.c drawing_utils.c parser.c init_player.c utils.c move_pl
         sprites.c
         merge_sort.c
         parsing_utils.c
-        check_map_borders.c)
+        check_map_borders.c
+       bitmap.c
+        )
 target_link_libraries(Cub gnl mlx ft)
 
 

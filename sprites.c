@@ -72,7 +72,7 @@ void	init_sprite_list(t_game *game)
 	t_sprite_list *node;
 
 	i = 0;
-	printf("adress = %p\n", game->sprites);
+	//printf("adress = %p\n", game->sprites);
 	map = game->map;
 	while (map[i])
 	{
@@ -139,7 +139,7 @@ t_spr_screen	get_sprite_preferences(t_game *game, int sprite_index)
 	return (spr);
 }
 
-void 	draw_all_sprites(t_game *game, float *z_buff)
+void 	draw_all_sprites(t_game *game, float *z_buff, t_ray ray)
 {
 	int i;
 
@@ -148,12 +148,13 @@ void 	draw_all_sprites(t_game *game, float *z_buff)
 	game->sprites = mergesort_list(game->sprites);
 	t_sprite_list *spr = game->sprites;
 	while (i < game->sprites_list_size) {
-		draw_sprite(game, i, z_buff);
+		draw_sprite(game, i, z_buff, ray);
 		i++;
 	}
 }
 
-void 	draw_sprite(t_game *game, int sprite_index, float *z_buff)
+
+void 	draw_sprite(t_game *game, int sprite_index, float *z_buff, t_ray ray)
 {
 
 	int color;
@@ -172,7 +173,8 @@ void 	draw_sprite(t_game *game, int sprite_index, float *z_buff)
 				if (j + spr.v_offset >= 0 && j + spr.v_offset <= game->win_height) {
 					color = get_texture_pixel(game->textures[SPRITE], spr, i, j);
 					if (color)
-						my_mlx_pixel_put(&game->image, i + spr.h_offset, j + spr.v_offset, color);
+						my_mlx_pixel_put(&game->image, i + spr.h_offset, j + spr.v_offset,
+								shadow_wall(color, spr.dist, 0.1));
 				}
 				j++;
 			}

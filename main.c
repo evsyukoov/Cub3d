@@ -12,23 +12,6 @@
 
 #include "cub.h"
 
-int 	render_next(t_game *game)
-{
-	raycaster(game, game->textures);
-	return (1);
-}
-
-void 	print_config(t_game *game)
-{
-	char **map;
-	map = game->map;
-	int i = 0;
-	printf("width = %d, height = %d\n", game->win_width, game->win_height);
-	printf("ceiling color = %d, floor color = %d\n", game->ceiling_color, game->floor_color);
-	while (map[i])
-		printf("%s$\n", map[i++]);
-}
-
 void 	run(t_game *game)
 {
 	void *mlx_win;
@@ -39,19 +22,44 @@ void 	run(t_game *game)
 	image.img = mlx_new_image(game->mlx, game->win_width, game->win_height);
 	image.addr = mlx_get_data_addr(image.img, &image.bits_per_pixel, &image.line_length, &image.endian);
 	game->image = image;
+	raycaster(game, game->textures);
+	mlx_put_image_to_window(game->mlx, game->mlx_win, game->image.img, 0, 0);
 	mlx_hook(game->mlx_win, 2, 1L << 0, &key_events, game);
-	mlx_loop_hook(game->mlx, render_next, game);
 	mlx_loop(game->mlx);
 }
 
-int     main(void) {
+void 	screenshot(t_game *game)
+{
+	t_data image;
+
+	image.img = mlx_new_image(game->mlx, game->win_width, game->win_height);
+	image.addr = mlx_get_data_addr(image.img, &image.bits_per_pixel, &image.line_length, &image.endian);
+	game->image = image;
+	raycaster(game, game->textures);
+	create_bmp(game);
+}
+
+int     main(int argc, char **argv) {
 	t_game *game;
 	int fd;
 
-	fd = open("./Maps/cub1.cub", O_RDONLY);
+	fd = open(argv[1], O_RDONLY);
+	if (fd < 0)
+		error("Cub-file dont't find\n");
 	game = init_game(fd);
-	printf("player x = %d, player y= %d\n", game->player->x, game->player->y);
-	run(game);
+	if (argc == 2)
+		run(game);
+	else if (argc == 3 && ft_strncmp("--save", argv[2],
+			ft_strlen(argv[2]) > 6 ? ft_strlen(argv[2]) : 6) == 0)
+		screenshot(game);
+	else
+		error("Wrong arguments!\n");
+	/*unsigned char rgb[4];
+	int_to_bytes(16776960, rgb);
+	printf("0 = %d 1 = %d, 2 = %d, 3 = %d", rgb[0], rgb[1], rgb[2], rgb[3]);
+	int color = rgb_to_int(rgb[1], rgb[2], rgb[3]);
+	printf("\ncolor = %d", color);*/
+
 }
 
 
