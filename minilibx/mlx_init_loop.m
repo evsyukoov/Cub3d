@@ -10,6 +10,13 @@
 
 #include "font.c"
 
+int 	mlx_get_screen_size(void *mlx_ptr, int *sizex, int *sizey)
+{
+	NSRect e = [[NSScreen mainScreen] frame];
+	*sizex = (int)e.size.width;
+	*sizey = (int)e.size.height;
+	return (0);
+}
 
 void	do_loop_hook2(CFRunLoopTimerRef observer, void * info)
 {
