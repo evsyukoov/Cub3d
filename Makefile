@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: denis <denis@student.42.fr>                +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2020/07/18 16:21:25 by denis             #+#    #+#              #
+#    Updated: 2020/07/18 16:22:35 by denis            ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 CFLAGS = -Wall -Wextra -Werror
 
 NAME = cub3d
@@ -25,11 +37,13 @@ SRCS = Cub_src/bitmap.c \
 OBJS = $(SRCS:.c=.o)
 
 FRAMEWORKS = -framework OpenGL -framework AppKit
-LIB = libft/libft.a minilibx/libmlx.a
+LIB = -Llibft -lft -Lminilibx -lmlx
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
+	make -C libft/
+	make -C minilibx/
 	gcc $(CFLAGS) -o $(NAME) $(OBJS) $(LIB) $(FRAMEWORKS)
 
 %.o: %.c
@@ -37,8 +51,12 @@ $(NAME): $(OBJS)
 
 clean:
 	rm -f $(OBJS)
+	make -C libft/ clean
+	make -C minilibx/ clean
 
 fclean: clean
 	rm -f $(NAME)
+	make -C libft/ fclean
+	make -C minilibx/ fclean
 
 re: fclean all

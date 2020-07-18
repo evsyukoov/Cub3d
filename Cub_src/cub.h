@@ -20,8 +20,8 @@
 # include "../GNL/get_next_line.h"
 # include "../libft/libft.h"
 
-# define MONITORX 1440
-# define MONITORY 900
+# define MONITORX 5000
+# define MONITORY 1400
 # define DEFAULT -1
 # define SOUTH 0
 # define NORTH 1
